@@ -81,17 +81,19 @@ SET(CUDA_SEPARABLE_COMPILATION ON)
 cuda_add_library(AKAZE_CUDA ${AKAZE_CUDA_SRCS})
 target_link_libraries(AKAZE_CUDA ${OpenCV_LIBS})
 
-# Feature detector program
-add_executable(akaze_features akaze_features.cpp)
-target_link_libraries(akaze_features AKAZE AKAZE_CUDA)
+if(BUILD_EXAMPLES)
+  # Feature detector program
+  add_executable(akaze_features akaze_features.cpp)
+  target_link_libraries(akaze_features AKAZE AKAZE_CUDA)
 
-# Image matching program
-add_executable(akaze_match akaze_match.cpp)
-target_link_libraries(akaze_match AKAZE AKAZE_CUDA)
+  # Image matching program
+  add_executable(akaze_match akaze_match.cpp)
+  target_link_libraries(akaze_match AKAZE AKAZE_CUDA)
 
-# Program that compares AKAZE with ORB and BRISK
-add_executable(akaze_compare akaze_compare.cpp)
-target_link_libraries(akaze_compare AKAZE AKAZE_CUDA)
+  # Program that compares AKAZE with ORB and BRISK
+  add_executable(akaze_compare akaze_compare.cpp)
+  target_link_libraries(akaze_compare AKAZE AKAZE_CUDA)
+endif(BUILD_EXAMPLES)
 
 # ============================================================================ #
 # Library installation

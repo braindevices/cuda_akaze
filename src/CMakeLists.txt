@@ -108,7 +108,7 @@ install(FILES
     lib/cuda_akaze.h
     lib/cudautils.h
     DESTINATION
-    include
+    include/cuda_akaze
 )
 
 # ============================================================================ #
